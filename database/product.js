@@ -4,6 +4,7 @@ var PRODUCTSCHEMA = {
   precio:      Number,
   categoria:   String,
   descripcion: String,
+  register:    Date,
 }
 
 const PRODUCT = mongoose.model("product", PRODUCTSCHEMA);

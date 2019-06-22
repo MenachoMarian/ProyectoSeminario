@@ -4,6 +4,7 @@ var USERSCHEMA = {
   email:      String,
   contraseña: String,
   register:   Date,
+  roles:      Array,
 }
 
 const USER = mongoose.model("user", USERSCHEMA);

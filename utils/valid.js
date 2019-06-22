@@ -12,6 +12,14 @@ var valid = {
       return false;
     }
     return true;
+  },
+
+  checkPrice: function(price) {
+    var exp = /\w{1,}[0-9.]/g
+    if (price.match(exp) == null) {
+      return false;
+    }
+    return true;
   }
 
 };
