@@ -45,7 +45,7 @@ router.get('/', function(req, res, next) {
   })
 });
  //PARTE DE USUARIO:
-router.post('/user', async(req, res) => {
+router.post("/user", async(req, res) => {
   var params = req.body;
   params["register"] = new Date();
   params["roles"] = ["list"];
