@@ -2,6 +2,7 @@ const mongoose = require("./connect");
 var PRODUCTSCHEMA = {
   nombre:      String,
   precio:      Number,
+  stock:       Number,
   categoria:   String,
   descripcion: String,
   register:    Date,
