@@ -1,10 +1,11 @@
 const mongoose = require("./connect");
 var CITASCHEMA = {
-  fecha:      Date,
+  fecha:      String,
   hora:       String,
-  lugar:      String,
-  iduser:     String,
-  idProduct:  String,
+  //lugar:      String,
+  //iduser:     String,
+  //idProduct:  String,
+  emailuser:  String,
   register:   Date,
 }
 
