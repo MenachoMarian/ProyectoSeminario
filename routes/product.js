@@ -50,12 +50,16 @@ router.get("/product",async(req,res, next) => {
   var filter = {};
   if(params.id != null){
     filter= {_id: params.id};
-    }
+  }
+  var fil = {};
+  if(params.nombre != null){
+    fil= {nombre: params.nombre}; }
+
   var skip = 0;
   if (params.skip != null) {
     skip = parseInt(params.skip);
   }
-  var list = await PRODUCT.find(filter).limit(limit).sort({_id: order}).skip(skip);
+  var list = await PRODUCT.find(filter).limit(limit).sort({_id: order}).skip(skip).find(fil);
   res.status(200).json(list);
 });
 
