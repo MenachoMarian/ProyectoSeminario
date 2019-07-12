@@ -1,12 +1,14 @@
 const mongoose = require("./connect");
 var CITASCHEMA = {
-  fecha:      String,
-  hora:       String,
+  fecha:          String,
+  hora:           String,
   //lugar:      String,
   //iduser:     String,
-  //idProduct:  String,
-  emailuser:  String,
-  register:   Date,
+  idpro:          String,
+  nompreproducto: String,
+  cantidadprodu:  Number,
+  emailuser:      String,
+  register:       Date,
 }
 
 const CITA = mongoose.model("cita", CITASCHEMA);
