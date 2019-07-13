@@ -9,6 +9,7 @@ var PRODUCTSCHEMA = {
   register:    Date,
   emailuser:   String,
   estado:      String,
+  picture:      String,
 }
 
 const PRODUCT = mongoose.model("product", PRODUCTSCHEMA);
