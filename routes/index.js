@@ -48,7 +48,7 @@ router.get('/', function(req, res, next) {
 router.post("/user", async(req, res) => {
   var params = req.body;
   params["register"] = new Date();
-  params["roles"] = ["list"];
+  params["roles"] = ["list","delete","patch"];
   if(!valid.checkParams(USERSCHEMA, params)){
     res.status(300).json({
       msn: "Parámetros incorrectos"
@@ -67,7 +67,8 @@ router.post("/user", async(req, res) => {
   res.status(200).json(result);
 });
 
-router.get('/user', verifytoken,async(req,res, next) => {
+
+router.get('/user',async(req,res, next) => {
   var params = req.query;
   var limit = 100;
   if(params.limit != null){
@@ -85,13 +86,17 @@ router.get('/user', verifytoken,async(req,res, next) => {
   if(params.id != null){
     filter= {_id: params.id};
     }
+    var fil = {};
+    if(params.email != null){
+      fil= {email: params.email}; }
   var skip = 0;
   if (params.skip != null) {
     skip = parseInt(params.skip);
   }
-  var list = await USER.find(filter).limit(limit).sort({_id: order}).skip(skip);
+  var list = await USER.find(filter).limit(limit).sort({_id: order}).skip(skip).find(fil);
   res.status(200).json(list);
 });
+
 
 router.put('/user', async(req, res) => {
   var params = req.body;
@@ -135,6 +140,7 @@ router.patch('/user', async(req, res) => {
     });
     return;
   }
+  params["roles"] = ["list","delete","patch"];
   var result = await USER.findOneAndUpdate({_id: id},params);
   res.status(200).json(result);
 });
